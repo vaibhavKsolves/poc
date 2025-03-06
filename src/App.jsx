@@ -51,7 +51,7 @@
 //         bordered
 //         dataSource={products}
 //         renderItem={(product) => (
-//           <List.Item actions={[<Button type="primary" onClick={() => dispatch(addToCart(product))}>Add to Cart</Button>]}> 
+//           <List.Item actions={[<Button type="primary" onClick={() => dispatch(addToCart(product))}>Add to Cart</Button>]}>
 //             {product.name}
 //           </List.Item>
 //         )}
@@ -62,7 +62,7 @@
 //         bordered
 //         dataSource={cartItems}
 //         renderItem={(item) => (
-//           <List.Item actions={[<Button type="dashed" onClick={() => dispatch(removeFromCart(item.id))}>Remove</Button>]}> 
+//           <List.Item actions={[<Button type="dashed" onClick={() => dispatch(removeFromCart(item.id))}>Remove</Button>]}>
 //             {item.name}
 //           </List.Item>
 //         )}
@@ -84,7 +84,8 @@ import SigmaGraph from "./component/Sigma";
 import TransactionTable from "./component/Transact";
 import Pagination from "./component/PaginationComponent";
 import "antd/dist/reset.css";
-import Sidebar from './component/Sidebar'
+import Sidebar from "./component/Sidebar";
+import AutoComplete from "./component/AutoComplete";
 
 const { Title } = Typography;
 
@@ -106,11 +107,11 @@ const App = () => {
         <SigmaGraph />
       </Card>,
       <TransactionTable key="transactionTable" />,
-      <Sidebar key="sidebar" />  // Sidebar as a separate page
+      <Sidebar key="sidebar" />, // Sidebar as a separate page
+      <AutoComplete key="autocomplete" />,
     ],
     []
   );
-  
 
   return (
     <div style={{ padding: "20px" }}>
@@ -143,8 +144,25 @@ const App = () => {
           </List.Item>
         )}
       /> */}
-
-      <Pagination totalItems={components.length} itemsPerPage={1} onPageChange={setCurrentPage} />
+      <div
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          background: "#fff", 
+          padding: "10px",
+          boxShadow: "0 -2px 5px rgba(0, 0, 0, 0.1)", 
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Pagination
+          totalItems={components.length}
+          itemsPerPage={1}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };
