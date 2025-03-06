@@ -84,6 +84,7 @@ import SigmaGraph from "./component/Sigma";
 import TransactionTable from "./component/Transact";
 import Pagination from "./component/PaginationComponent";
 import "antd/dist/reset.css";
+import Sidebar from './component/Sidebar'
 
 const { Title } = Typography;
 
@@ -105,15 +106,17 @@ const App = () => {
         <SigmaGraph />
       </Card>,
       <TransactionTable key="transactionTable" />,
+      <Sidebar key="sidebar" />  // Sidebar as a separate page
     ],
     []
   );
+  
 
   return (
     <div style={{ padding: "20px" }}>
       {components[currentPage - 1]}
 
-      <Title level={2}>🛒 Products</Title>
+      {/* <Title level={2}>🛒 Products</Title>
       <List
         bordered
         dataSource={products}
@@ -127,8 +130,8 @@ const App = () => {
         )}
       />
 
-      <Title level={2}>🛍️ Cart</Title>
-      <List
+      <Title level={2}>🛍️ Cart</Title> */}
+      {/* <List
         bordered
         dataSource={cartItems}
         renderItem={(item) => (
@@ -139,7 +142,7 @@ const App = () => {
             </Button>
           </List.Item>
         )}
-      />
+      /> */}
 
       <Pagination totalItems={components.length} itemsPerPage={1} onPageChange={setCurrentPage} />
     </div>
