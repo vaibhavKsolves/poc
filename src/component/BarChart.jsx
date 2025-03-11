@@ -48,7 +48,7 @@ const BarChart = () => {
       new Sigma(graph, containerRef.current);
     }
   }, []);
-
+console.log("checking")
   return (
     <Card title="D3.js Bar Chart with Ant Design, React Flow & Sigma.js" style={{ width: 450, margin: "auto", textAlign: "center" }}>
       <svg ref={svgRef}></svg>
