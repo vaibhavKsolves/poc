@@ -3,7 +3,7 @@ name: CI/CD Pipeline for React-D3 App
 on:
   push:
     branches:
-      - main  # Runs only when code is pushed to main branch
+      - main  # Runs when code is pushed to main branch
   pull_request:
     branches:
       - main
@@ -11,6 +11,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # ⬅️ Add this line to allow pushing changes
 
     steps:
       - name: Checkout Repository
@@ -30,3 +32,9 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
