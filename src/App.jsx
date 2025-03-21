@@ -86,6 +86,7 @@ import Pagination from "./component/PaginationComponent";
 import "antd/dist/reset.css";
 import Sidebar from "./component/Sidebar";
 import AutoComplete from "./component/AutoComplete";
+import ProgressBar from "./component/ProgressBar";
 
 const { Title } = Typography;
 
@@ -109,6 +110,7 @@ const App = () => {
       <TransactionTable key="transactionTable" />,
       <Sidebar key="sidebar" />, // Sidebar as a separate page
       <AutoComplete key="autocomplete" />,
+      <ProgressBar key="progress" />,
     ],
     []
   );
